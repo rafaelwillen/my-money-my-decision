@@ -6,5 +6,4 @@ module com.rafaelwillen {
 
     opens com.rafaelwillen to javafx.fxml;
     exports com.rafaelwillen;
-    exports com.rafaelwillen.controller;
 }
