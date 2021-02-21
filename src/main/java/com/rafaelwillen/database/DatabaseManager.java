@@ -83,10 +83,11 @@ public class DatabaseManager {
                 "    ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         sqlStatments[6] = "CREATE TABLE IF NOT EXISTS familia(" +
+                "id_familia INTEGER NOT NULL," +
                 "nome TEXT NOT NULL," +
                 "endereco TEXT NOT NULL," +
                 "telefone_casa TEXT NOT NULL," +
-                "PRIMARY KEY (\"nome\")" +
+                "PRIMARY KEY (\"id_familia\")" +
                 ")";
         sqlStatments[7] = "CREATE TABLE IF NOT EXISTS gasto( " +
                 " id_gasto INTEGER NOT NULL," +
@@ -185,7 +186,7 @@ public class DatabaseManager {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             resultSet.next();
-            int countResult = resultSet.getInt("first_time_run");
+            int countResult = resultSet.getInt(1);
             SQLiteConnection.closeConnection(connection, statement, resultSet);
             return countResult == 1;
         } catch (SQLException e){

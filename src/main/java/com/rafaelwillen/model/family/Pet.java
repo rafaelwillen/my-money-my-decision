@@ -8,12 +8,22 @@ public class Pet {
     private String animalType;
     private String name;
     private LocalDate birthDate;
+    private Sex sex;
 
-    public Pet(int id, String animalType, String name, LocalDate birthDate) {
+    public Pet(int id, String animalType, String name, LocalDate birthDate, Sex sex) {
         this.id = id;
         this.animalType = animalType;
         this.name = name;
         this.birthDate = birthDate;
+        this.sex = sex;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public int getId() {

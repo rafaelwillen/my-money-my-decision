@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class Family {
+    private final static String PROVINCE_KEY = "PROVINCE";
+    private final static String DISTRICT_KEY = "MUNICIPIO";
+    private final static String STREET_KEY = "RUA";
     private final int id;
     private final LinkedList<Son> sons;
     private final LinkedList<Pet> pets;
@@ -17,11 +20,17 @@ public class Family {
     public Family(int id, String name, String housePhoneNumber, HashMap<String, String> address) {
         this.id = id;
         this.name = name;
+        this.address = address == null ? new HashMap<String, String>() : address;
         this.housePhoneNumber = housePhoneNumber;
-        this.address = address;
         mother = father = null;
         sons = new LinkedList<>();
         pets = new LinkedList<>();
+
+    }
+
+    public Family(int id, String name, String housePhoneNumber, String address) {
+        this(id, name, housePhoneNumber, (HashMap<String, String>) null);
+        setAddressString(address);
     }
 
     public int getId() {
@@ -49,7 +58,23 @@ public class Family {
     }
 
     public void setAddress(HashMap<String, String> address) {
-        this.address = address;
+        if (address.containsKey(DISTRICT_KEY) && address.containsKey(STREET_KEY) && address.containsKey(PROVINCE_KEY))
+            this.address = address;
+        else
+            throw new IllegalArgumentException("The keys in the hash map are not correct. Must be MUNICIPIO, RUA, PROVINCE");
+    }
+
+    public String getAddressString() {
+        return String.join(", ", address.values());
+    }
+
+    public void setAddressString(String addressString) {
+
+        if (addressString.split(",").length != 3)
+            throw new IllegalArgumentException("The 'addressString' is not formatted correctly. Must have two ','");
+        address.put(PROVINCE_KEY, addressString.split(",")[0]);
+        address.put(DISTRICT_KEY, addressString.split(",")[1]);
+        address.put(STREET_KEY, addressString.split(",")[2]);
     }
 
     public Parent getMother() {
