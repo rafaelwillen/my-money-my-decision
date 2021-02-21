@@ -5,9 +5,9 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class Family {
-    private final static String PROVINCE_KEY = "PROVINCE";
-    private final static String DISTRICT_KEY = "MUNICIPIO";
-    private final static String STREET_KEY = "RUA";
+    public final static String PROVINCE_KEY = "PROVINCE";
+    public final static String DISTRICT_KEY = "MUNICIPIO";
+    public final static String STREET_KEY = "RUA";
     private final int id;
     private final LinkedList<Son> sons;
     private final LinkedList<Pet> pets;

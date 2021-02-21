@@ -5,19 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/EmailDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/FamilyDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PetDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PhoneNumberDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/FamilyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/AlertManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CustomWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/RoutesConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/Validator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createFamily.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/AccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/AccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/FamilyDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Family.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -184,6 +183,12 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/FamilyDAO.java</url>
           <line>44</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Family.java</url>
+          <line>17</line>
+          <properties field="father" class="com.rafaelwillen.model.family.Family" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
