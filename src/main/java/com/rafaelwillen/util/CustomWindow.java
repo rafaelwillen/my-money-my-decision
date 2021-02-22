@@ -17,7 +17,7 @@ public abstract class CustomWindow {
      *
      * @param node The node
      */
-    protected void closeWindow(Node node, boolean toGoNextScreen) {
+    protected boolean closeWindow(Node node, boolean toGoNextScreen) {
         if (toGoNextScreen) {
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
@@ -25,8 +25,11 @@ public abstract class CustomWindow {
             if (confirmClose()) {
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
+                return true;
             }
+            return false;
         }
+        return true;
     }
 
     /**

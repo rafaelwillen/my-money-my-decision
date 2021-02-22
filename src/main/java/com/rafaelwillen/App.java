@@ -30,11 +30,11 @@ public class App extends Application {
             AlertManager.showErrorAlert("Erro Fatal", "Ocorreu um erro ao carregar a base de dados");
         }
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(RoutesConstants.CREATE_FAMILY_FXML));
+            Parent root = FXMLLoader.load(getClass().getResource(RoutesConstants.WELCOME_SCREEN_FXML));
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setResizable(false);
-            stage.setTitle("Criar Familia");
+            stage.setTitle("Inicialização");
             stage.show();
         } catch (IOException e) {
             AlertManager.showErrorAlert("Erro Fatal", "Ocorreu um erro ao carregar a janela");

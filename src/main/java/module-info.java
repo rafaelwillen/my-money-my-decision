@@ -6,6 +6,9 @@ module com.rafaelwillen {
 
     opens com.rafaelwillen to javafx.fxml;
     opens com.rafaelwillen.controller.form.create to javafx.fxml;
+    opens com.rafaelwillen.controller.form to javafx.fxml;
+    opens com.rafaelwillen.controller.util to javafx.fxml;
+
     exports com.rafaelwillen;
     exports com.rafaelwillen.controller.form.create;
 }
