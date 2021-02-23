@@ -37,3 +37,39 @@
 .flat-button:hover{
     -fx-background-color: #0e83f1;
 }
+
+.side-menu {
+    -fx-background-color: #0e83f1;
+}
+
+.selected-side{
+  -fx-background-color: #1B53F4;
+-fx-alignment: CENTER_LEFT;
+}
+
+.top-bar-button:hover{
+    -fx-blend-mode: SOFT-LIGHT;
+
+}
+
+.menu-button{
+    -fx-background-color: #0e83f1;
+-fx-alignment: CENTER_LEFT;
+}
+
+.menu-button:hover{
+    -fx-background-color: #025db3;
+    //-fx-text-fill: #FFF;
+
+}
+
+.light-card{
+-fx-background-color: #f4f4f4;
+-fx-background-radius: 14px;
+
+}
+
+.dark-card{
+-fx-background-color: #D5D5D5;
+-fx-background-radius: 14px;
+}

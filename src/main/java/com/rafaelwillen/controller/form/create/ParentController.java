@@ -154,6 +154,7 @@ public class ParentController extends CustomWindow implements Initializable {
 
         if (birthDate.isAfter(LocalDate.now())) {
             AlertManager.showWarningAlert("Data Inválida", "A data inserida acontece depois da data de hoje");
+            return false;
         }
 
         if ((LocalDate.now().getYear() - birthDate.getYear()) < 18) {

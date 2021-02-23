@@ -16,6 +16,9 @@ public class RoutesConstants {
     public final static String WELCOME_SCREEN_FXML = PROJECT_ROOT + "utils/welcome.fxml";
     public final static String END_CONFIGURATION_FXML = PROJECT_ROOT + "utils/endConfiguration.fxml";
 
+    // Dashboard views
+    public final static String DASHBOARD_SCREEN_FXML = PROJECT_ROOT + "dashboard/dashboard.fxml";
+
 
     private RoutesConstants() {
     }

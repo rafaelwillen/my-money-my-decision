@@ -22,12 +22,12 @@ public class DatabaseManager {
      * @throws SQLException If there was an query error or the connection was not possible
      */
     public static boolean firstTimeUsage() throws SQLException {
-        String sql = "SELECT setup_complete FROM config";
+        String sql = "SELECT first_time_run FROM config";
         Connection connection = SQLiteConnection.connect();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         resultSet.next();
-        boolean setupComplete = resultSet.getInt(1) == 1;
+        boolean setupComplete = resultSet.getInt(1) == 0;
         SQLiteConnection.closeConnection(connection, statement, resultSet);
         return setupComplete;
     }

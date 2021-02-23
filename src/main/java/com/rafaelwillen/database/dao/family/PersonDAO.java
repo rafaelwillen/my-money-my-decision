@@ -184,6 +184,19 @@ public class PersonDAO implements AccessObject<Person> {
         return result;
     }
 
+    public boolean authenticate(String username, String password) throws SQLException {
+        connection = SQLiteConnection.connect();
+        sqlStatement = String.format("SELECT COUNT() FROM %s WHERE %s=? AND %s=?", TABLE_NAME, FIELD_USERNAME, FIELD_PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        boolean result = resultSet.getInt(1) != 0;
+        SQLiteConnection.closeConnection(connection, preparedStatement, resultSet);
+        return result;
+    }
+
     public Parent getMother() throws SQLException {
         connection = SQLiteConnection.connect();
         sqlStatement = String.format("SELECT * FROM %s WHERE %s='PARENTE' AND %s='FEMININO'", TABLE_NAME, FIELD_PERSON_TYPE, FIELD_SEX);
