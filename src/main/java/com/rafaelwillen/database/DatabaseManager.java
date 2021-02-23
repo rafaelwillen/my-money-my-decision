@@ -150,7 +150,7 @@ public class DatabaseManager {
         for(String sqlStatement : sqlStatments){
             statement.executeUpdate(sqlStatement);
         }
-        if (configTableExists()){
+        if (!onlyHasOneValue()){
             statement.executeUpdate("INSERT INTO config VALUES(0)");
         }
         SQLiteConnection.closeConnection(connection, statement);
@@ -162,7 +162,7 @@ public class DatabaseManager {
      * @throws SQLException If there was an query error or the connection was not possible
      */
     public static void setSetupComplete() throws SQLException {
-        String sql = "UPDATE config SET setup_complete=1";
+        String sql = "UPDATE config SET first_time_run=1";
         Connection connection = SQLiteConnection.connect();
         Statement statement = connection.createStatement();
         statement.executeUpdate(sql);
@@ -176,10 +176,11 @@ public class DatabaseManager {
         File databaseFile = new File("database.db");
         if (databaseFile.exists() && databaseFile.delete()) {
             System.out.println("Database deleted");
+            System.exit(0);
         }
     }
 
-    private static boolean configTableExists(){
+    private static boolean onlyHasOneValue(){
         String sql = "SELECT COUNT() FROM config";
         try {
             Connection connection = SQLiteConnection.connect();

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class EndConfiguration extends CustomWindow implements Initializable {
+public class EndConfigurationController extends CustomWindow implements Initializable {
 
     @FXML
     private AnchorPane topBar;

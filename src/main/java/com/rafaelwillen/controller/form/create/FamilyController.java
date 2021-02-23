@@ -5,15 +5,22 @@ import com.rafaelwillen.database.dao.family.FamilyDAO;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.util.AlertManager;
 import com.rafaelwillen.util.CustomWindow;
+import com.rafaelwillen.util.RoutesConstants;
 import com.rafaelwillen.util.Validator;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -41,6 +48,8 @@ public class FamilyController extends CustomWindow implements Initializable {
 
     @FXML
     private ToggleGroup familyType;
+
+    private Family family;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -96,10 +105,36 @@ public class FamilyController extends CustomWindow implements Initializable {
                 showCreateParentWindow("MAE");
         }
         // TODO: Show end configuration here
+        showEndConfigurationWindow();
+    }
+
+    private void showEndConfigurationWindow() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(RoutesConstants.END_CONFIGURATION_FXML));
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.setTitle("Fim de Configuração");
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
     }
 
     private void showCreateParentWindow(String parent) {
-        AlertManager.showWarningAlert("Work in progress", "Not implemented yet");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(RoutesConstants.CREATE_PARENT_FXML));
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        try {
+            stage.setScene(new Scene(loader.load()));
+            ParentController controller = loader.getController();
+            controller.initData(parent, family);
+            stage.setTitle("Criar Parente");
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     private boolean addFamily() {
@@ -112,7 +147,7 @@ public class FamilyController extends CustomWindow implements Initializable {
         address.put(Family.PROVINCE_KEY, province);
         address.put(Family.STREET_KEY, street);
         address.put(Family.DISTRICT_KEY, district);
-        Family family = new Family(1, name, phone, address);
+        family = new Family(1, name, phone, address);
         try {
             FamilyDAO.getInstance().add(family);
         } catch (SQLException e) {

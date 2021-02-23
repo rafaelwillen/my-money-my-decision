@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -74,5 +75,12 @@ public abstract class CustomWindow {
     }
 
     protected abstract boolean validateForm();
+
+    protected Optional<String> buildCustomTextInputDialog(String title, String label) {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setHeaderText(title);
+        textInputDialog.setContentText(label);
+        return textInputDialog.showAndWait();
+    }
 
 }

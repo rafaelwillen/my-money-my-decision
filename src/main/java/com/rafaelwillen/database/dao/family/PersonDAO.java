@@ -173,7 +173,7 @@ public class PersonDAO implements AccessObject<Person> {
 
     public boolean exists(String username, String password) throws SQLException {
         connection = SQLiteConnection.connect();
-        sqlStatement = String.format("SELECT COUNT() FROM %s WHERE %s=? AND %s=?", TABLE_NAME, FIELD_USERNAME, FIELD_PASSWORD);
+        sqlStatement = String.format("SELECT COUNT() FROM %s WHERE %s=? OR %s=?", TABLE_NAME, FIELD_USERNAME, FIELD_PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setString(1, username);
         preparedStatement.setString(2, password);
