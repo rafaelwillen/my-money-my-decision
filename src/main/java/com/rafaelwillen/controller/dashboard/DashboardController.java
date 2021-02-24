@@ -1,7 +1,5 @@
 package com.rafaelwillen.controller.dashboard;
 
-import com.rafaelwillen.controller.form.create.PetController;
-import com.rafaelwillen.controller.form.create.SonController;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.util.CustomWindow;
@@ -19,7 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
