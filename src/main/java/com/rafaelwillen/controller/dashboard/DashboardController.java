@@ -102,18 +102,6 @@ public class DashboardController extends CustomWindow implements Initializable {
     void showPrevisionScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(2);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(RoutesConstants.CREATE_SON_FXML));
-        try {
-            Parent root= loader.load();
-            SonController controller = loader.getController();
-            controller.initData(family);
-            Stage stage = new Stage(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

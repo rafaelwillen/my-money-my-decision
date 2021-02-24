@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/PetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/SonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/SonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createPet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createPet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createSon.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createSon.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,16 +201,5 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added function to create the database tables" />
     <option name="LAST_COMMIT_MESSAGE" value="Added function to create the database tables" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/DashboardController.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
