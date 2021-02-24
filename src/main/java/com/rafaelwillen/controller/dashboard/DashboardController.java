@@ -1,5 +1,7 @@
 package com.rafaelwillen.controller.dashboard;
 
+import com.rafaelwillen.controller.form.create.PetController;
+import com.rafaelwillen.controller.form.create.SonController;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.util.CustomWindow;
@@ -17,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -99,6 +102,18 @@ public class DashboardController extends CustomWindow implements Initializable {
     void showPrevisionScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(2);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(RoutesConstants.CREATE_SON_FXML));
+        try {
+            Parent root= loader.load();
+            SonController controller = loader.getController();
+            controller.initData(family);
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

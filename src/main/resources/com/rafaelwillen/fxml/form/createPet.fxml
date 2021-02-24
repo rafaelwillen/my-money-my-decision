@@ -1,14 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.rafaelwillen.fxml.form.CreatePet"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="350.0" prefWidth="600.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rafaelwillen.controller.form.create.PetController">
+    <children>
+        <AnchorPane fx:id="topBar" layoutX="538.0" layoutY="24.0" prefHeight="40.0" styleClass="top-bar" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="12.0" prefHeight="20.0" prefWidth="344.0" styleClass="window-title" text="Criar Animal Estimação" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="139.0" AnchorPane.topAnchor="12.0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="140.0380859375" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true" styleClass="top-bar-button" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="12.0">
+                    <image>
+                        <Image url="@../../icons/close.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <VBox layoutY="44.0" prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="600.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Insira os dados do animal">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Text>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="45.0" prefWidth="540.0" spacing="30.0">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+               <children>
+                  <VBox styleClass="input-container">
+                     <children>
+                        <Label styleClass="input" text="Nome" />
+                        <TextField fx:id="name_textField" prefHeight="30.0" prefWidth="200.0" styleClass="input">
+                           <tooltip>
+                              <Tooltip />
+                           </tooltip></TextField>
+                     </children>
+                  </VBox>
+                  <VBox styleClass="input-container">
+                     <children>
+                        <Label styleClass="input" text="Sexo" />
+                        <ComboBox fx:id="sex_comboBox" prefHeight="30.0" prefWidth="200.0">
+                           <tooltip>
+                              <Tooltip text="Campo Obrigatório" />
+                           </tooltip>
+                           <styleClass>
+                              <String fx:value="input" />
+                              <String fx:value="combo-box" />
+                           </styleClass></ComboBox>
+                     </children>
+                  </VBox>
+               </children>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="40.0" layoutY="74.0" prefHeight="45.0" prefWidth="540.0" spacing="30.0">
+                    <children>
+                  <VBox styleClass="input-container">
+                     <children>
+                        <Label styleClass="input" text="Tipo de Animal" />
+                        <TextField fx:id="animalType_textField" prefWidth="200.0" styleClass="input">
+                           <tooltip>
+                              <Tooltip text="Campo Obrigatório" />
+                           </tooltip></TextField>
+                     </children>
+                  </VBox>
+                  <VBox styleClass="input-container">
+                     <children>
+                        <Label styleClass="input" text="Data Nascimento" />
+      
+                              <DatePicker fx:id="birthDate_date" editable="false" prefWidth="200.0" styleClass="input">
+                           <tooltip>
+                              <Tooltip text="Campo Obrigatório" />
+                           </tooltip></DatePicker>
+                     </children>
+                  </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" layoutX="40.0" layoutY="339.0" prefHeight="45.0" prefWidth="540.0" spacing="15.0">
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#cancel" prefWidth="100.0" style="-fx-background-color: #d4d4d4; -fx-text-fill: red;" styleClass="flat-button" text="Cancelar" />
+                  <Button mnemonicParsing="false" onAction="#create" prefHeight="29.0" prefWidth="100.0" styleClass="flat-button" text="Criar" />
+               </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="15.0" />
+            </padding>
+        </VBox>
+    </children>
+    <effect>
+        <InnerShadow blurType="GAUSSIAN" choke="0.1" height="10.0" radius="4.5" width="10.0" />
+    </effect>
 </AnchorPane>

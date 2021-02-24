@@ -98,7 +98,7 @@ public class DatabaseManager {
                 " descricao TEXT," +
                 " tipo_gasto TEXT NOT NULL," +
                 " username_pessoa TEXT," +
-                " nome_familia TEXT," +
+                " id_familia TEXT," +
                 " id_animal INTEGER," +
                 " id_previsao INTEGER NOT NULL," +
                 " PRIMARY KEY (\"id_gasto\")," +
@@ -108,8 +108,8 @@ public class DatabaseManager {
                 " FOREIGN KEY (\"id_animal\")" +
                 "     REFERENCES animal (\"id_animal\")" +
                 "     ON DELETE CASCADE ON UPDATE CASCADE," +
-                " FOREIGN KEY (\"nome_familia\")" +
-                "     REFERENCES familia (\"nome\")" +
+                " FOREIGN KEY (\"id_familia\")" +
+                "     REFERENCES familia (\"id_familia\")" +
                 "     ON DELETE CASCADE ON UPDATE CASCADE," +
                 " FOREIGN KEY (\"id_previsao\")" +
                 "     REFERENCES previsao_mensal (\"id_previsao\")" +

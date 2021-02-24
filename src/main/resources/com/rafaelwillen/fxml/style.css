@@ -24,7 +24,12 @@
 
 .input{
     -fx-font-size: 14px;
-}   
+}
+
+.combo-box{
+    -fx-background-color: #fff;
+    -fx-border-color: #c4c4c4;
+}
 
 .flat-button{
     -fx-background-color: #0D78DE;
