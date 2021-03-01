@@ -1,5 +1,6 @@
 package com.rafaelwillen.controller.dashboard;
 
+import com.rafaelwillen.controller.form.create.FamilyController;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.util.CustomWindow;
@@ -40,6 +41,7 @@ public class DashboardController extends CustomWindow implements Initializable {
     private VBox menuButton_vBox;
     private Person userLoggedIn;
     private Family family;
+    private HashMap<String, Object> page;
 
     public void initData(Person userLoggedIn, Family family) {
         this.family = family;
@@ -75,30 +77,43 @@ public class DashboardController extends CustomWindow implements Initializable {
     void showConsultScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(4);
+        page = getPage(RoutesConstants.CONSULTS_SCREEN_FXML);
+        mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
     @FXML
     void showCostsScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(3);
+        page = getPage(RoutesConstants.COSTS_SCREEN_FXML);
+        mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
     @FXML
     void showFamilyScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(1);
+        page = getPage(RoutesConstants.FAMILY_SCREEN_FXML);
+        // TODO: Add the family dashboard screen controller
+        mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
     @FXML
     void showHomeScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(0);
+         page = getPage(RoutesConstants.HOME_SCREEN_FXML);
+        HomeController controller = (HomeController)  page.get(CONTROLLER_KEY);
+        controller.initData(userLoggedIn, family);
+        mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
     @FXML
     void showPrevisionScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(2);
+         page = getPage(RoutesConstants.PREVISION_SCREEN_FXML);
+        mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
     @Override
@@ -153,8 +168,8 @@ public class DashboardController extends CustomWindow implements Initializable {
 
     private HashMap<String, Object> getPage(String windowPath) {
         HashMap<String, Object> returnValue = new HashMap<>();
-        Pane selectedView = null;
-        Initializable controller = null;
+        Pane selectedView;
+        Initializable controller;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(windowPath));
         try {
             selectedView = loader.load();

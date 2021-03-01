@@ -18,6 +18,11 @@ public class RoutesConstants {
 
     // Dashboard views
     public final static String DASHBOARD_SCREEN_FXML = PROJECT_ROOT + "dashboard/dashboard.fxml";
+    public final static String HOME_SCREEN_FXML = PROJECT_ROOT + "dashboard/home.fxml";
+    public final static String CONSULTS_SCREEN_FXML = PROJECT_ROOT + "dashboard/consults.fxml";
+    public final static String COSTS_SCREEN_FXML = PROJECT_ROOT + "dashboard/costs.fxml";
+    public final static String FAMILY_SCREEN_FXML = PROJECT_ROOT + "dashboard/family.fxml";
+    public final static String PREVISION_SCREEN_FXML = PROJECT_ROOT + "dashboard/prevision.fxml";
 
 
     private RoutesConstants() {

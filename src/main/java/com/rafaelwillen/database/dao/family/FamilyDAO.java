@@ -2,9 +2,11 @@ package com.rafaelwillen.database.dao.family;
 
 import com.rafaelwillen.database.SQLiteConnection;
 import com.rafaelwillen.database.dao.AccessObject;
+import com.rafaelwillen.database.dao.finance.CostDAO;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Pet;
 import com.rafaelwillen.model.family.Son;
+import com.rafaelwillen.model.finance.GeneralCost;
 
 import java.sql.*;
 
@@ -61,6 +63,11 @@ public class FamilyDAO implements AccessObject<Family> {
                 PetDao.getInstance().add(pet);
             }
         }
+        if (object.getCosts().size() > 0){
+            for (GeneralCost cost : object.getCosts()){
+                CostDAO.getInstance().add(cost);
+            }
+        }
     }
 
     @Override
@@ -106,6 +113,7 @@ public class FamilyDAO implements AccessObject<Family> {
         newFamily.setMother(PersonDAO.getInstance().getMother());
         newFamily.getSons().addAll(PersonDAO.getInstance().getAllSons());
         newFamily.getPets().addAll(PetDao.getInstance().getAll());
+        newFamily.getCosts().addAll(CostDAO.getInstance().getAllFromFamily());
         return newFamily;
     }
 

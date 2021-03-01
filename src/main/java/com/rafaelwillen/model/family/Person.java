@@ -1,7 +1,9 @@
 package com.rafaelwillen.model.family;
 
+import com.rafaelwillen.model.finance.Income;
+import com.rafaelwillen.model.finance.IndividualCost;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -10,6 +12,8 @@ public abstract class Person {
     protected final String username;
     protected final LinkedList<String> emails;
     protected final LinkedList<String> phoneNumbers;
+    protected final LinkedList<IndividualCost> costs;
+    protected final LinkedList<Income> incomes;
     protected String name;
     protected LocalDate birthDate;
     protected String password;
@@ -23,6 +27,8 @@ public abstract class Person {
         this.sex = sex;
         emails = new LinkedList<>();
         phoneNumbers = new LinkedList<>();
+        costs = new LinkedList<>();
+        incomes = new LinkedList<>();
     }
 
     public String getUsername() {
@@ -85,8 +91,24 @@ public abstract class Person {
         return emails;
     }
 
-    public LinkedList<String> getPhoneNumbers(){
+    public LinkedList<String> getPhoneNumbers() {
         return phoneNumbers;
+    }
+
+    public LinkedList<IndividualCost> getCosts() {
+        return costs;
+    }
+
+    public LinkedList<Income> getIncomes() {
+        return incomes;
+    }
+
+    public void addCost(IndividualCost cost) {
+        costs.add(cost);
+    }
+
+    public void addIncome(Income income) {
+        incomes.add(income);
     }
 
     @Override

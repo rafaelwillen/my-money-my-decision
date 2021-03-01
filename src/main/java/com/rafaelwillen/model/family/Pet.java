@@ -1,6 +1,9 @@
 package com.rafaelwillen.model.family;
 
+import com.rafaelwillen.model.finance.IndividualCost;
+
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Pet {
@@ -9,6 +12,7 @@ public class Pet {
     private String name;
     private LocalDate birthDate;
     private Sex sex;
+    private final LinkedList<IndividualCost> costs;
 
     public Pet(int id, String animalType, String name, LocalDate birthDate, Sex sex) {
         this.id = id;
@@ -16,6 +20,7 @@ public class Pet {
         this.name = name;
         this.birthDate = birthDate;
         this.sex = sex;
+        costs = new LinkedList<>();
     }
 
     public Sex getSex() {
@@ -64,6 +69,14 @@ public class Pet {
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
         return id == pet.id;
+    }
+
+    public LinkedList<IndividualCost> getCosts() {
+        return costs;
+    }
+
+    public void addCost(IndividualCost cost){
+        costs.add(cost);
     }
 
     @Override

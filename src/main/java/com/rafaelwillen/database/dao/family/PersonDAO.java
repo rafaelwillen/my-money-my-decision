@@ -2,10 +2,14 @@ package com.rafaelwillen.database.dao.family;
 
 import com.rafaelwillen.database.SQLiteConnection;
 import com.rafaelwillen.database.dao.AccessObject;
+import com.rafaelwillen.database.dao.finance.CostDAO;
+import com.rafaelwillen.database.dao.finance.IncomeDAO;
 import com.rafaelwillen.model.family.Parent;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.model.family.Sex;
 import com.rafaelwillen.model.family.Son;
+import com.rafaelwillen.model.finance.Income;
+import com.rafaelwillen.model.finance.IndividualCost;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -66,10 +70,10 @@ public class PersonDAO implements AccessObject<Person> {
             default:
                 throw new NullPointerException("The variable 'person' was not initialized");
         }
-        if (person.getEmails().size() > 0)
-        person.getEmails().addAll(PhoneNumberDAO.getInstance().getAllFromPessoa(username));
-        if (person.getPhoneNumbers().size() > 0)
+        person.getPhoneNumbers().addAll(PhoneNumberDAO.getInstance().getAllFromPessoa(username));
         person.getEmails().addAll(EmailDAO.getInstance().getAllFromPessoa(username));
+        person.getCosts().addAll(CostDAO.getInstance().getAllFromMember(username));
+        person.getIncomes().addAll(IncomeDAO.getInstance().getAllFromPerson(person));
         return person;
     }
 
@@ -99,9 +103,18 @@ public class PersonDAO implements AccessObject<Person> {
         preparedStatement.setString(6, object instanceof Parent ? "PARENTE" : "FILHO");
         preparedStatement.executeUpdate();
         SQLiteConnection.closeConnection(connection, preparedStatement);
+        if (object.getPhoneNumbers().size() > 0)
         PhoneNumberDAO.getInstance().addAll(object.getUsername(), object.getPhoneNumbers());
+        if (object.getEmails().size() > 0)
         EmailDAO.getInstance().addAll(object.getUsername(), object.getEmails());
-
+        if (object.getCosts().size() > 0)
+            for (IndividualCost cost : object.getCosts()){
+                CostDAO.getInstance().add(cost);
+            }
+        if (object.getIncomes().size() > 0 )
+            for (Income income : object.getIncomes()){
+                IncomeDAO.getInstance().add(income);
+            }
     }
 
     @Override

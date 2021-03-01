@@ -2,10 +2,11 @@ package com.rafaelwillen.database.dao.family;
 
 import com.rafaelwillen.database.SQLiteConnection;
 import com.rafaelwillen.database.dao.AccessObject;
+import com.rafaelwillen.database.dao.finance.CostDAO;
 import com.rafaelwillen.model.family.Pet;
 import com.rafaelwillen.model.family.Sex;
+import com.rafaelwillen.model.finance.IndividualCost;
 
-import java.lang.ref.PhantomReference;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -35,7 +36,7 @@ public class PetDao implements AccessObject<Pet> {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sqlStatement);
         LinkedList<Pet> pets = new LinkedList<>();
-        while (resultSet.next()){
+        while (resultSet.next()) {
             pets.add(buildPet(resultSet));
         }
         SQLiteConnection.closeConnection(connection, statement, resultSet);
@@ -49,6 +50,7 @@ public class PetDao implements AccessObject<Pet> {
         LocalDate birthDate = LocalDate.parse(resultSet.getString(FIELD_BIRTH_DATE));
         Sex sex = Sex.valueOf(resultSet.getString(FIELD_SEX));
         Pet pet = new Pet(id, animalType, name, birthDate, sex);
+        pet.getCosts().addAll(CostDAO.getInstance().getAllFromMember(id));
         return pet;
     }
 
@@ -75,6 +77,11 @@ public class PetDao implements AccessObject<Pet> {
         preparedStatement.setString(5, object.getSex().name());
         preparedStatement.executeUpdate();
         SQLiteConnection.closeConnection(connection, preparedStatement);
+        if (object.getCosts().size() > 0) {
+            for (IndividualCost cost : object.getCosts()) {
+                CostDAO.getInstance().add(cost);
+            }
+        }
     }
 
     @Override
@@ -120,9 +127,9 @@ public class PetDao implements AccessObject<Pet> {
     @Override
     public boolean exists(Object object) throws SQLException {
         int id;
-        if (object instanceof Pet){
+        if (object instanceof Pet) {
             id = ((Pet) object).getId();
-        } else if (!(object instanceof Integer)){
+        } else if (!(object instanceof Integer)) {
             throw new IllegalArgumentException("The argument 'id' must be an integer");
         } else {
             id = (int) object;

@@ -104,7 +104,6 @@ public class FamilyController extends CustomWindow implements Initializable {
                 showCreateParentWindow("PAI");
                 showCreateParentWindow("MAE");
         }
-        // TODO: Show end configuration here
         showEndConfigurationWindow();
     }
 

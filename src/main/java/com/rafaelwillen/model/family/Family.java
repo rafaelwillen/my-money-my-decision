@@ -1,5 +1,7 @@
 package com.rafaelwillen.model.family;
 
+import com.rafaelwillen.model.finance.GeneralCost;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -11,6 +13,7 @@ public class Family {
     private final int id;
     private final LinkedList<Son> sons;
     private final LinkedList<Pet> pets;
+    private final LinkedList<GeneralCost> costs;
     private String name;
     private String housePhoneNumber;
     private HashMap<String, String> address;
@@ -25,7 +28,7 @@ public class Family {
         mother = father = null;
         sons = new LinkedList<>();
         pets = new LinkedList<>();
-
+        costs = new LinkedList<>();
     }
 
     public Family(int id, String name, String housePhoneNumber, String address) {
@@ -107,6 +110,14 @@ public class Family {
 
     public void addPet(Pet newPet) {
         pets.add(newPet);
+    }
+
+    public LinkedList<GeneralCost> getCosts() {
+        return costs;
+    }
+
+    public void addCost(GeneralCost cost) {
+        costs.add(cost);
     }
 
     @Override
