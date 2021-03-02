@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/IncomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createIncome.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/MonthlyPrevisionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createMonthlyPrevision.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CustomWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CustomWindow.java" afterDir="false" />
     </list>

@@ -90,4 +90,8 @@ public abstract class CustomWindow {
         });
     }
 
+    protected void makeNumberInput(Spinner spinner) {
+        makeNumberInput(spinner.getEditor());
+    }
+
 }
