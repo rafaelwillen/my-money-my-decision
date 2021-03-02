@@ -1,10 +1,9 @@
 package com.rafaelwillen.util;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.util.Optional;
@@ -81,6 +80,14 @@ public abstract class CustomWindow {
         textInputDialog.setHeaderText(title);
         textInputDialog.setContentText(label);
         return textInputDialog.showAndWait();
+    }
+
+    protected void makeNumberInput(TextField textField) {
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
 
 }

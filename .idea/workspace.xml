@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/IncomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createIncome.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CustomWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CustomWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +48,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last.edited.regexp" value="" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23333333" />
@@ -184,7 +186,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613841694529</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added the quick check for the finance card">
+      <created>1614720344509</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614720344509</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added the quick check for the finance card">
+      <created>1614720400606</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614720400606</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,17 +218,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added function to create the database tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function to create the database tables" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/LoginController.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added the quick check for the finance card" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the quick check for the finance card" />
   </component>
 </project>
