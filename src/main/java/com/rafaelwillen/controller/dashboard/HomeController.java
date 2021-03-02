@@ -1,14 +1,12 @@
 package com.rafaelwillen.controller.dashboard;
 
-import com.rafaelwillen.database.dao.finance.CostDAO;
-import com.rafaelwillen.database.dao.finance.IncomeDAO;
-import com.rafaelwillen.model.family.*;
+import com.rafaelwillen.model.family.Family;
+import com.rafaelwillen.model.family.Parent;
+import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.model.finance.Cost;
-import com.rafaelwillen.model.finance.GeneralCost;
 import com.rafaelwillen.model.finance.Income;
-import com.rafaelwillen.model.finance.IndividualCost;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,7 +15,6 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -75,11 +72,11 @@ public class HomeController implements Initializable {
 
     }
 
-    public void initData(Person userLoggedIn, Family family){
+    public void initData(Person userLoggedIn, Family family) {
         this.family = family;
         this.userLoggedIn = userLoggedIn;
 
-        if (userLoggedIn instanceof Parent){
+        if (userLoggedIn instanceof Parent) {
             parent_image.setVisible(true);
             userType_label.setText("Parente");
         } else {
@@ -125,7 +122,7 @@ public class HomeController implements Initializable {
         monthlyBalance_label.setText(monthlyBalance + " kzs");
     }
 
-    private boolean sameMonthAndYear(LocalDate date){
+    private boolean sameMonthAndYear(LocalDate date) {
         return date.getMonth().equals(LocalDate.now().getMonth()) && date.getYear() == LocalDate.now().getYear();
     }
 }
