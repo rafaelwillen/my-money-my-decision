@@ -23,7 +23,7 @@
                 <GridPane hgap="13.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="131.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -33,7 +33,7 @@
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px; -fx-fill: #FF0000;" text="Previsão Mensal" wrappingWidth="130.0" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Balanço Mensal" wrappingWidth="130.0" GridPane.rowIndex="2" />
-                        <Text fx:id="monthlyGain_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #5ad73b; -fx-font-size: 16px;" GridPane.columnIndex="1" />
+                        <Text fx:id="monthlyGain_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #5ad73b; -fx-font-size: 16px;" textAlignment="RIGHT" GridPane.columnIndex="1" />
                         <Text fx:id="monthlyPrevision_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FF0000; -fx-font-size: 16px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Text fx:id="monthlyBalance_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #5ad73b; -fx-font-size: 16px;" text="Lucro Mensal" wrappingWidth="130.0" />
