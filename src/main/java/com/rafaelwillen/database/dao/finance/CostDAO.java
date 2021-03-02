@@ -23,7 +23,7 @@ public class CostDAO implements AccessObject<Cost> {
     private final static String FIELD_LOCAL = "local";
     private final static String FIELD_DESCRIPTION = "descricao";
     private final static String FIELD_COST_TYPE = "tipo_gasto";
-    private final static String FK_USERNAME = "username";
+    private final static String FK_USERNAME = "username_pessoa";
     private final static String FK_FAMILY = "id_familia";
     private final static String FK_PET = "id_animal";
     private final static String FK_PREVISION = "id_previsao";
@@ -168,7 +168,7 @@ public class CostDAO implements AccessObject<Cost> {
         sqlStatement = String.format("SELECT * FROM %s WHERE %s=?", TABLE_NAME, FK_PREVISION);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setInt(1, previsaoId);
-        ResultSet resultSet = preparedStatement.executeQuery(sqlStatement);
+        ResultSet resultSet = preparedStatement.executeQuery();
         LinkedList<Cost> costs = new LinkedList<>();
         while (resultSet.next()) {
             costs.add(buildCost(resultSet));
@@ -182,7 +182,7 @@ public class CostDAO implements AccessObject<Cost> {
         sqlStatement = String.format("SELECT * FROM %s WHERE %s=?", TABLE_NAME, FK_USERNAME);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setString(1, username);
-        ResultSet resultSet = preparedStatement.executeQuery(sqlStatement);
+        ResultSet resultSet = preparedStatement.executeQuery();
         LinkedList<IndividualCost> costs = new LinkedList<>();
         while (resultSet.next()) {
             costs.add((IndividualCost) buildCost(resultSet));
@@ -196,7 +196,7 @@ public class CostDAO implements AccessObject<Cost> {
         sqlStatement = String.format("SELECT * FROM %s WHERE %s=?", TABLE_NAME, FK_PET);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setInt(1, id);
-        ResultSet resultSet = preparedStatement.executeQuery(sqlStatement);
+        ResultSet resultSet = preparedStatement.executeQuery();
         LinkedList<IndividualCost> costs = new LinkedList<>();
         while (resultSet.next()) {
             costs.add((IndividualCost) buildCost(resultSet));
@@ -210,7 +210,7 @@ public class CostDAO implements AccessObject<Cost> {
         sqlStatement = String.format("SELECT * FROM %s WHERE %s=?", TABLE_NAME, FK_FAMILY);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setInt(1, 1);
-        ResultSet resultSet = preparedStatement.executeQuery(sqlStatement);
+        ResultSet resultSet = preparedStatement.executeQuery();
         LinkedList<GeneralCost> costs = new LinkedList<>();
         while (resultSet.next()) {
             costs.add((GeneralCost) buildCost(resultSet));

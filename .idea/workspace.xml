@@ -5,30 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/CostDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/CreditDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/IncomeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/MonthlyPrevisionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/Cost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/Credit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/GeneralCost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/Income.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/IndividualCost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/finance/MonthlyPrevision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/consults.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/costs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/family.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/prevision.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/FamilyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/FamilyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/FamilyDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/FamilyDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PetDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PetDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Family.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Family.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/model/family/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/RoutesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/RoutesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/CostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/finance/CostDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +61,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.rafaelwillen.App" />
       <module name="my-money-my-decision" />
-      <option name="VM_PARAMETERS" value="--module-path $JAVAFX$ --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -223,5 +202,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added function to create the database tables" />
     <option name="LAST_COMMIT_MESSAGE" value="Added function to create the database tables" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/LoginController.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
