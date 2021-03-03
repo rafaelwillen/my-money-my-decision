@@ -60,6 +60,12 @@ public class AlertManager {
         return result.isPresent() && result.get().getButtonData().equals(ButtonBar.ButtonData.YES);
     }
 
+    public static void showInformationDialog(String title, String content){
+        Alert informationAlert = buildAlert(title, content);
+        informationAlert.setAlertType(Alert.AlertType.INFORMATION);
+        informationAlert.showAndWait();
+    }
+
     private static Alert buildAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(title);
