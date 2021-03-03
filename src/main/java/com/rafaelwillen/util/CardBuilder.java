@@ -161,7 +161,7 @@ public class CardBuilder {
         parentCard.setPadding(new Insets(18, 15, 18, 15));
         parentCard.getColumnConstraints().addAll(
                 new ColumnConstraints(),
-                new ColumnConstraints(130),
+                new ColumnConstraints(110),
                 new ColumnConstraints()
         );
         parentCard.getRowConstraints().addAll(

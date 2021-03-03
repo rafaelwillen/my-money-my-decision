@@ -92,23 +92,27 @@ public class HomeController implements Initializable {
 
     private void loadQuickFinanceCard() {
         double monthlyBalance;
-        double monthlyIncome;
-        double monthlyCost;
+        double monthlyIncome = 0;
+        double monthlyCost = 0;
 
         // Incomes
-        monthlyIncome = family.getFather().getIncomes().stream().filter(income ->
-                sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
-        monthlyIncome += family.getMother().getIncomes().stream().filter(income ->
-                sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
+        if (family.getFather() != null) {
+            monthlyIncome += family.getFather().getIncomes().stream().filter(income ->
+                    sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
+            monthlyCost += family.getFather().getCosts().stream().filter(cost ->
+                    sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
+        }
+        if (family.getMother() != null) {
+            monthlyIncome += family.getMother().getIncomes().stream().filter(income ->
+                    sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
+            monthlyCost += family.getMother().getCosts().stream().filter(cost ->
+                    sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
+        }
         monthlyIncome += family.getSons().stream().flatMap(son -> son.getIncomes().stream()).filter(income ->
                 sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
 
         // Costs
         monthlyCost = family.getCosts().stream().filter(cost ->
-                sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-        monthlyCost += family.getMother().getCosts().stream().filter(cost ->
-                sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-        monthlyCost += family.getFather().getCosts().stream().filter(cost ->
                 sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
         monthlyCost += family.getSons().stream().flatMap(son -> son.getCosts().stream()).filter(cost ->
                 sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();

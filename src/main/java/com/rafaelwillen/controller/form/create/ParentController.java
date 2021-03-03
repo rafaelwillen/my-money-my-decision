@@ -7,7 +7,6 @@ import com.rafaelwillen.database.dao.family.PersonDAO;
 import com.rafaelwillen.database.dao.family.PhoneNumberDAO;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Parent;
-import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.model.family.Sex;
 import com.rafaelwillen.util.AlertManager;
 import com.rafaelwillen.util.CustomWindow;
@@ -239,6 +238,11 @@ public class ParentController extends CustomWindow implements Initializable {
         parent.getPhoneNumbers().addAll(phones);
         try {
             PersonDAO.getInstance().add(parent);
+            if (parent.getSex().equals(Sex.MASCULINO)) {
+                family.setFather(parent);
+            } else {
+                family.setMother(parent);
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             AlertManager.showErrorAlert("Erro na inserção", "Ocorreu um erro na inserção do parente, tente novamente");
