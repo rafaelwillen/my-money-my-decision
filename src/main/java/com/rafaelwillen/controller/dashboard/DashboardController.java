@@ -1,6 +1,5 @@
 package com.rafaelwillen.controller.dashboard;
 
-import com.rafaelwillen.controller.form.create.FamilyController;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.util.CustomWindow;
@@ -94,7 +93,8 @@ public class DashboardController extends CustomWindow implements Initializable {
         setDefaultStyle();
         setSelectedButton(1);
         page = getPage(RoutesConstants.FAMILY_SCREEN_FXML);
-        // TODO: Add the family dashboard screen controller
+        FamilyController controller = (FamilyController) page.get(CONTROLLER_KEY);
+        controller.initData(family, userLoggedIn);
         mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 
