@@ -3,6 +3,8 @@ package com.rafaelwillen.controller.dashboard;
 import com.rafaelwillen.controller.form.create.ParentController;
 import com.rafaelwillen.controller.form.create.PetController;
 import com.rafaelwillen.controller.form.create.SonController;
+import com.rafaelwillen.controller.util.PersonDetailsController;
+import com.rafaelwillen.controller.util.PetDetailsController;
 import com.rafaelwillen.database.DatabaseManager;
 import com.rafaelwillen.database.dao.family.PersonDAO;
 import com.rafaelwillen.database.dao.family.PetDao;
@@ -205,7 +207,19 @@ public class FamilyController implements Initializable {
     }
 
     private void showPet(Pet pet) {
-        // TODO: Create the detail window for the pet
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(RoutesConstants.PET_DETAILS_FXML));
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        stage.setTitle("Detalhes do Animal");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        try {
+            stage.setScene(new Scene(loader.load()));
+            PetDetailsController controller = loader.getController();
+            controller.initData(pet);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            return;
+        }
+        stage.showAndWait();
     }
 
     private void editPet(Pet pet) {
@@ -311,8 +325,19 @@ public class FamilyController implements Initializable {
     }
 
     private void showPersonDetailWindow(Person person) {
-        // TODO: Create the detail window for the person
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(RoutesConstants.PERSON_DETAILS_FXML));
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        stage.setTitle("Detalhes da Pessoa");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        try {
+            stage.setScene(new Scene(loader.load()));
+            PersonDetailsController controller = loader.getController();
+            controller.initData(person, userLoggedIn);
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+            return;
+        }
+        stage.showAndWait();
     }
 
     private void editParent(Parent parent) {

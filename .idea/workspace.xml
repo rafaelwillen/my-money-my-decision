@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/util/PersonDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/util/PetDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/utils/personDetails.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/utils/petDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/FamilyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/FamilyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/RoutesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/RoutesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/family.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/family.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
