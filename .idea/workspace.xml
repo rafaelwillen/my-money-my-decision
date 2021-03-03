@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/FamilyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/FamilyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/ParentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/ParentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CardBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/CardBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/family.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/dashboard/family.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/database/dao/family/PersonDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,13 +223,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/dashboard/FamilyController.java</url>
-          <line>269</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/ParentController.java</url>
-          <line>240</line>
+          <line>239</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>

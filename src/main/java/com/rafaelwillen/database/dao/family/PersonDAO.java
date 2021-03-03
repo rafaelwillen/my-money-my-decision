@@ -88,6 +88,8 @@ public class PersonDAO implements AccessObject<Person> {
         preparedStatement.setString(1, (String) id);
         preparedStatement.executeUpdate();
         SQLiteConnection.closeConnection(connection, preparedStatement);
+        EmailDAO.getInstance().deleteAllFrom((String) id);
+        PhoneNumberDAO.getInstance().deleteAllFrom((String) id);
     }
 
     @Override
@@ -132,7 +134,6 @@ public class PersonDAO implements AccessObject<Person> {
         preparedStatement.setString(5, id.toString());
         preparedStatement.executeUpdate();
         SQLiteConnection.closeConnection(connection, preparedStatement);
-        // TODO: After adding the emailDAO and phoneNumberDAO, check if it will delete
     }
 
     @Override
