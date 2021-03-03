@@ -127,7 +127,7 @@ public class FamilyController extends CustomWindow implements Initializable {
         try {
             stage.setScene(new Scene(loader.load()));
             ParentController controller = loader.getController();
-            controller.initData(parent, family);
+            controller.initData(parent, family, true);
             stage.setTitle("Criar Parente");
             stage.setResizable(false);
             stage.showAndWait();

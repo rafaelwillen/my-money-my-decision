@@ -60,6 +60,8 @@ public class ParentController extends CustomWindow implements Initializable {
 
     private Sex parentSex;
 
+    private boolean isFirstTime;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         makeWindowDraggable(topBar);
@@ -67,7 +69,8 @@ public class ParentController extends CustomWindow implements Initializable {
         phone_listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
-    public void initData(String parent, Family family) {
+    public void initData(String parent, Family family, boolean isFirstTime) {
+        this.isFirstTime = isFirstTime;
         this.family = family;
         if (parent.equals("PAI")) {
             windowTitle.setText("Criar Pai");
@@ -110,7 +113,7 @@ public class ParentController extends CustomWindow implements Initializable {
 
     @FXML
     void closeWindow(MouseEvent event) {
-        if (closeWindow(topBar, false)) {
+        if (closeWindow(topBar, false) && isFirstTime) {
             DatabaseManager.deleteDatabase();
         }
     }

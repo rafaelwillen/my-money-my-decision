@@ -387,7 +387,7 @@ public class FamilyController implements Initializable {
         try {
             stage.setScene(new Scene(loader.load()));
             ParentController controller = loader.getController();
-            controller.initData(isFather ? "MAE" : "PAI", family);
+            controller.initData(isFather ? "MAE" : "PAI", family, false);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             return;
