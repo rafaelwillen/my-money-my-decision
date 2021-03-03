@@ -120,6 +120,13 @@ public class Family {
         costs.add(cost);
     }
 
+    public int getNumberOfMembers(){
+        int number = sons.size();
+        if (mother != null) number++;
+        if (father != null) number++;
+        return number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
