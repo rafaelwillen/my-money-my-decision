@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66b80d5f-4a3e-42ae-94f4-f263bb57f82f" name="Default Changelist" comment="Added function to create the database tables">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/CreditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createCredit.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/controller/form/create/CostController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/rafaelwillen/fxml/form/createCost.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/AlertManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rafaelwillen/util/AlertManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
