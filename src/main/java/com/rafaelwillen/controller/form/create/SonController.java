@@ -219,7 +219,7 @@ public class SonController extends CustomWindow implements Initializable {
             family.addSon(son);
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            AlertManager.showErrorAlert("Erro na inserção", "Ocorreu um erro na inserção do parente, tente novamente");
+            AlertManager.showErrorAlert("Erro na inserção", "Ocorreu um erro na inserção do filho, tente novamente");
             return false;
         }
         return true;

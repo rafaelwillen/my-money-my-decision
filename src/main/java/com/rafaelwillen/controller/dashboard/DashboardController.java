@@ -112,7 +112,9 @@ public class DashboardController extends CustomWindow implements Initializable {
     void showPrevisionScreen(ActionEvent event) {
         setDefaultStyle();
         setSelectedButton(2);
-         page = getPage(RoutesConstants.PREVISION_SCREEN_FXML);
+        page = getPage(RoutesConstants.PREVISION_SCREEN_FXML);
+        PrevisionController controller = (PrevisionController) page.get(CONTROLLER_KEY);
+        controller.initData(family, userLoggedIn);
         mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 

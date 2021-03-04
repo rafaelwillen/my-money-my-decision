@@ -29,7 +29,7 @@ public class RoutesConstants {
     // Finance forms
     public final static String CREATE_COST_FXML = PROJECT_ROOT + "form/createCost.fxml";
     public final static String CREATE_CREDIT_FXML = PROJECT_ROOT + "form/createCredit.fxml";
-    public final static String CREATE_INCOME_FXML = PROJECT_ROOT + "form/creatIncome.fxml";
+    public final static String CREATE_INCOME_FXML = PROJECT_ROOT + "form/createIncome.fxml";
     public final static String CREATE_MONTHLY_PREVISION_FXML = PROJECT_ROOT + "form/createMonthlyPrevision.fxml";
 
 

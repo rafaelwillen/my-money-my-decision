@@ -16,7 +16,7 @@ public class CreditDAO implements AccessObject<Credit> {
     private static final String FIELD_GRANTED_VALUE = "valor_concedido";
     private static final String FIELD_FEE = "juros";
     private static final String FIELD_REQUEST_DATE = "data_pedido";
-    private static final String FIELD_DEADLINE = "prazo_pagamaneto";
+    private static final String FIELD_DEADLINE = "prazo_pagamento";
     private static final String FIELD_DESCRIPTION = "descricao";
     private static final String FIELD_PAID = "pago";
     private static final CreditDAO creditDao = new CreditDAO();

@@ -9,6 +9,7 @@ module com.rafaelwillen {
     opens com.rafaelwillen.controller.form to javafx.fxml;
     opens com.rafaelwillen.controller.util to javafx.fxml;
     opens com.rafaelwillen.controller.dashboard to javafx.fxml;
+    opens com.rafaelwillen.util.tableViewModel to javafx.base;
     exports com.rafaelwillen.controller.form.create;
     exports com.rafaelwillen.controller.dashboard;
 }
