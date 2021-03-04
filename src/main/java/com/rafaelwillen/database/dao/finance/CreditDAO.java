@@ -3,6 +3,7 @@ package com.rafaelwillen.database.dao.finance;
 import com.rafaelwillen.database.SQLiteConnection;
 import com.rafaelwillen.database.dao.AccessObject;
 import com.rafaelwillen.model.finance.Credit;
+import com.rafaelwillen.model.finance.Income;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ public class CreditDAO implements AccessObject<Credit> {
     private static final String FIELD_REQUEST_DATE = "data_pedido";
     private static final String FIELD_DEADLINE = "prazo_pagamaneto";
     private static final String FIELD_DESCRIPTION = "descricao";
+    private static final String FIELD_PAID = "pago";
     private static final CreditDAO creditDao = new CreditDAO();
     private static Connection connection;
     private static String sqlStatement;
@@ -43,7 +45,7 @@ public class CreditDAO implements AccessObject<Credit> {
     @Override
     public void add(Credit object) throws SQLException {
         connection = SQLiteConnection.connect();
-        sqlStatement = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s) VALUES (?,?,?,?,?,?)", TABLE_NAME, FIELD_ID, FIELD_GRANTED_VALUE, FIELD_FEE, FIELD_REQUEST_DATE, FIELD_DEADLINE, FIELD_DESCRIPTION);
+        sqlStatement = String.format("INSERT INTO %s (%s,%s,%s,%s,%s,%s,%s) VALUES (?,?,?,?,?,?,0)", TABLE_NAME, FIELD_ID, FIELD_GRANTED_VALUE, FIELD_FEE, FIELD_REQUEST_DATE, FIELD_DEADLINE, FIELD_DESCRIPTION, FIELD_PAID);
         PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
         preparedStatement.setInt(1, object.getId());
         preparedStatement.setDouble(2, object.getGrantedValue());
@@ -139,6 +141,38 @@ public class CreditDAO implements AccessObject<Credit> {
         int lastId = resultSet.getInt(1);
         SQLiteConnection.closeConnection(connection, statement, resultSet);
         return lastId;
+    }
+
+    public boolean isPaid(Income income) throws SQLException{
+        return isPaid(income.getId());
+    }
+
+    public boolean isPaid(int id) throws SQLException{
+        if (!exists(id)) throw new SQLDataException("There is no credit with the corresponding id = " + id);
+        connection = SQLiteConnection.connect();
+        sqlStatement = String.format("SELECT %s FROM %s WHERE %s=?", FIELD_PAID, TABLE_NAME, FIELD_ID);
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        boolean isPaid = resultSet.getInt(1) == 1;
+        SQLiteConnection.closeConnection(connection, preparedStatement, resultSet);
+        return isPaid;
+    }
+
+    public void setPaid(Income income) throws  SQLException{
+        setPaid(income.getId());
+    }
+
+    public void setPaid(int id) throws SQLException{
+        if (!exists(id)) throw new SQLDataException("There is no credit with the corresponding id = " + id);
+        if (isPaid(id)) throw new SQLDataException("The credit is already paid");
+        connection = SQLiteConnection.connect();
+        sqlStatement = String.format("UPDATE %s SET %s=1 WHERE %s=?", TABLE_NAME, FIELD_PAID, FIELD_ID);
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+        SQLiteConnection.closeConnection(connection, preparedStatement);
     }
 
     private Credit buildCredit(ResultSet resultSet) throws SQLException {

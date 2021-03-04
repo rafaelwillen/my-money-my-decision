@@ -55,6 +55,7 @@ public class DatabaseManager {
                 "data_pedido TEXT NOT NULL," +
                 "prazo_pagamento TEXT NOT NULL," +
                 "descricao TEXT NOT NULL," +
+                "pago INTEGER NOT NULL," +
                 "PRIMARY KEY (\"id_credito\")" +
                 ")";
         sqlStatments[3] = "CREATE TABLE IF NOT EXISTS pessoa(" +
@@ -146,11 +147,11 @@ public class DatabaseManager {
                 ")";
 
         Connection connection = SQLiteConnection.connect();
-        Statement statement =  connection.createStatement();
-        for(String sqlStatement : sqlStatments){
+        Statement statement = connection.createStatement();
+        for (String sqlStatement : sqlStatments) {
             statement.executeUpdate(sqlStatement);
         }
-        if (!onlyHasOneValue()){
+        if (!onlyHasOneValue()) {
             statement.executeUpdate("INSERT INTO config VALUES(0)");
         }
         SQLiteConnection.closeConnection(connection, statement);
@@ -180,7 +181,7 @@ public class DatabaseManager {
         }
     }
 
-    private static boolean onlyHasOneValue(){
+    private static boolean onlyHasOneValue() {
         String sql = "SELECT COUNT() FROM config";
         try {
             Connection connection = SQLiteConnection.connect();
@@ -190,7 +191,7 @@ public class DatabaseManager {
             int countResult = resultSet.getInt(1);
             SQLiteConnection.closeConnection(connection, statement, resultSet);
             return countResult == 1;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             return false;
         }
     }
