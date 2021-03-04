@@ -78,7 +78,7 @@
                   <VBox layoutX="10.0" layoutY="10.0" prefHeight="53.0" spacing="5.0" styleClass="input-container" HBox.hgrow="ALWAYS">
                      <children>
                         <Label styleClass="input" text="Valor do Gasto" />
-                        <TextField fx:id="value_textField" editable="false" styleClass="input">
+                        <TextField fx:id="value_textField" styleClass="input">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -104,7 +104,7 @@
                   <VBox layoutX="188.0" layoutY="10.0" prefHeight="53.0" spacing="5.0" styleClass="input-container" HBox.hgrow="ALWAYS">
                      <children>
                         <Label styleClass="input" text="Local" />
-                        <TextField fx:id="local_textField" editable="false" styleClass="input">
+                        <TextField fx:id="local_textField" styleClass="input">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
