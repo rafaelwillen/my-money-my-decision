@@ -14,7 +14,7 @@ public class MonthlyPrevisionDAO implements AccessObject<MonthlyPrevision> {
 
     private final static String TABLE_NAME = "previsao_mensal";
     private final static String FIELD_ID = "id_previsao";
-    private final static String FIELD_NAME = "nome_previsao";
+    private final static String FIELD_NAME = "nome";
     private final static String FIELD_DESCRIPTION = "descricao";
     private final static String FIELD_VALUE = "valor_previsto";
     private final static String FIELD_MONTH = "mes";

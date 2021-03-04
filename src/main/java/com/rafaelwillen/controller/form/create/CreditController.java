@@ -36,7 +36,6 @@ public class CreditController extends CustomWindow implements Initializable {
 
     @FXML
     private TextArea description_textArea;
-    private double minAmmount;
 
 
     @Override
@@ -48,10 +47,6 @@ public class CreditController extends CustomWindow implements Initializable {
 
         if (value_textField.getText().isEmpty() || fee_spinner.getEditor().getText().isEmpty() || deadline == null){
             AlertManager.showWarningAlert("Campos Vazios", "Preencha todos os campos obrigatorios");
-            return false;
-        }
-        if (value < minAmmount){
-            AlertManager.showWarningAlert("Valor Inválido", "O valor inserido é menor que o valor necessário para o crédito: " + minAmmount + " kzs");
             return false;
         }
         if (fee < 1 || fee > 100){
@@ -75,11 +70,6 @@ public class CreditController extends CustomWindow implements Initializable {
         fee_spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100));
         makeNumberInput(value_textField);
         makeNumberInput(fee_spinner);
-    }
-
-    public void initData(double minAmmount){
-        this.minAmmount = minAmmount;
-        value_textField.setText(String.valueOf(minAmmount));
     }
 
     @FXML

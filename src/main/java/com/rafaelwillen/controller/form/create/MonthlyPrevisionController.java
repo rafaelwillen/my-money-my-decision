@@ -50,12 +50,12 @@ public class MonthlyPrevisionController extends CustomWindow implements Initiali
     public void initialize(URL url, ResourceBundle resourceBundle) {
         makeWindowDraggable(topBar);
         populateComboBox();
-        month_comboBox.getSelectionModel().select(LocalDate.now().getMonthValue());
+        month_comboBox.getSelectionModel().select(LocalDate.now().getMonthValue() - 1);
     }
 
     public void initData(double totalIncome) {
         this.totalIncome = totalIncome;
-        value_spinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0, totalIncome));
+        value_spinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(1, totalIncome));
     }
 
     @FXML

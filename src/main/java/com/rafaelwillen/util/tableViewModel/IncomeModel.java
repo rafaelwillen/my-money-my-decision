@@ -12,8 +12,10 @@ public class IncomeModel {
     private final SimpleStringProperty incomeLocal;
     private final SimpleObjectProperty<LocalDate> creationDate;
     private final SimpleDoubleProperty value;
+    private final Income income;
 
     public IncomeModel(Income income){
+        this.income = income;
         this.incomeName = new SimpleStringProperty(income.getName());
         this.value = new SimpleDoubleProperty(income.getValue());
         this.incomeLocal = new SimpleStringProperty(income.getLocal());
@@ -67,5 +69,9 @@ public class IncomeModel {
 
     public void setValue(double value) {
         this.value.set(value);
+    }
+
+    public Income getIncome() {
+        return income;
     }
 }

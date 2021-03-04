@@ -143,8 +143,8 @@ public class CreditDAO implements AccessObject<Credit> {
         return lastId;
     }
 
-    public boolean isPaid(Income income) throws SQLException{
-        return isPaid(income.getId());
+    public boolean isPaid(Credit credit) throws SQLException{
+        return isPaid(credit.getId());
     }
 
     public boolean isPaid(int id) throws SQLException{
@@ -160,8 +160,8 @@ public class CreditDAO implements AccessObject<Credit> {
         return isPaid;
     }
 
-    public void setPaid(Income income) throws  SQLException{
-        setPaid(income.getId());
+    public void setPaid(Credit credit) throws  SQLException{
+        setPaid(credit.getId());
     }
 
     public void setPaid(int id) throws SQLException{
