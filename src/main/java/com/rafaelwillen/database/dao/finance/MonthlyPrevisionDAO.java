@@ -89,6 +89,21 @@ public class MonthlyPrevisionDAO implements AccessObject<MonthlyPrevision> {
         return monthlyPrevision;
     }
 
+    public LinkedList<MonthlyPrevision> getFromNow() throws SQLException {
+        connection = SQLiteConnection.connect();
+        sqlStatement = String.format("SELECT * FROM %s WHERE %s=? AND %s=?", TABLE_NAME, FIELD_MONTH, FIELD_YEAR);
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
+        preparedStatement.setString(1,LocalDate.now().getMonth().name());
+        preparedStatement.setInt(2, LocalDate.now().getYear());
+        ResultSet resultSet = preparedStatement.executeQuery();
+        LinkedList<MonthlyPrevision> monthlyPrevisions = new LinkedList<>();
+        while (resultSet.next()){
+            monthlyPrevisions.add(buildMonthlyPrevision(resultSet));
+        }
+        SQLiteConnection.closeConnection(connection, preparedStatement, resultSet);
+        return monthlyPrevisions;
+    }
+
     public LinkedList<MonthlyPrevision> getAll() throws SQLException{
         connection = SQLiteConnection.connect();
         sqlStatement = String.format("SELECT * FROM %s", TABLE_NAME);

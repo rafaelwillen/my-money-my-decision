@@ -1,7 +1,10 @@
 package com.rafaelwillen.controller.dashboard;
 
+import com.rafaelwillen.controller.form.create.CostController;
+import com.rafaelwillen.database.dao.finance.MonthlyPrevisionDAO;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Person;
+import com.rafaelwillen.model.finance.MonthlyPrevision;
 import com.rafaelwillen.util.CustomWindow;
 import com.rafaelwillen.util.RoutesConstants;
 import javafx.event.ActionEvent;
@@ -22,7 +25,9 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -85,6 +90,15 @@ public class DashboardController extends CustomWindow implements Initializable {
         setDefaultStyle();
         setSelectedButton(3);
         page = getPage(RoutesConstants.COSTS_SCREEN_FXML);
+        CostsController controller = (CostsController) page.get(CONTROLLER_KEY);
+            LinkedList<MonthlyPrevision> previsions;
+        try {
+            previsions = MonthlyPrevisionDAO.getInstance().getFromNow();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+        controller.initData(family, userLoggedIn, previsions);
         mainPane.setCenter((Pane) page.get(VIEW_KEY));
     }
 

@@ -17,6 +17,8 @@ public class RoutesConstants {
     public final static String END_CONFIGURATION_FXML = PROJECT_ROOT + "utils/endConfiguration.fxml";
     public final static String PET_DETAILS_FXML = PROJECT_ROOT + "utils/petDetails.fxml";
     public final static String PERSON_DETAILS_FXML = PROJECT_ROOT + "utils/personDetails.fxml";
+    public final static String FAMILY_MEMBER_TYPE_FXML = PROJECT_ROOT + "utils/familyMemberType.fxml";
+    public final static String SELECT_PREVISION_FXML = PROJECT_ROOT + "utils/selectPrevision.fxml";
 
     // Dashboard views
     public final static String DASHBOARD_SCREEN_FXML = PROJECT_ROOT + "dashboard/dashboard.fxml";
