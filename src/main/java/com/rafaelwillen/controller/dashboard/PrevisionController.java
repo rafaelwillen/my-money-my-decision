@@ -1,6 +1,5 @@
 package com.rafaelwillen.controller.dashboard;
 
-import com.rafaelwillen.controller.form.create.CreditController;
 import com.rafaelwillen.controller.form.create.IncomeController;
 import com.rafaelwillen.controller.form.create.MonthlyPrevisionController;
 import com.rafaelwillen.database.dao.finance.CreditDAO;
@@ -44,6 +43,7 @@ import java.util.ResourceBundle;
 public class PrevisionController implements Initializable {
 
     private final static int DIZIMO_FEE = 10;
+    private final static double MINIMUM_INCOME_DIZIMO = 100_000;
     @FXML
     private FlowPane mainPane;
     @FXML
@@ -94,8 +94,10 @@ public class PrevisionController implements Initializable {
     private Person selectedPerson;
     private Credit credit;
 
+
     private boolean isParent;
-    private double totalIncome = 0;
+    private double balance = 0;
+    private double totalValuePredicted = 0;
     private int selectedMonth;
     private LinkedList<MonthlyPrevision> monthlyPrevisions;
 
@@ -161,13 +163,13 @@ public class PrevisionController implements Initializable {
             AlertManager.showWarningAlert("Operação Inválida", "Apenas um pai ou mãe pode realizar esta operação");
             return;
         }
-        if (credit.valueToPay() > totalIncome){
+        if (credit.valueToPay() > balance){
             AlertManager.showWarningAlert("Valor Insuficiente", "Não existe valores suficientes para pagar o crédito");
             return;
         }
         try {
             CreditDAO.getInstance().setPaid(credit);
-            totalIncome -= credit.valueToPay();
+            balance -= credit.valueToPay();
             updateCredit();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -200,7 +202,7 @@ public class PrevisionController implements Initializable {
         try {
             stage.setScene(new Scene(loader.load()));
             controller = loader.getController();
-            controller.initData(totalIncome);
+            controller.initData(1000);
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -298,13 +300,31 @@ public class PrevisionController implements Initializable {
     }
 
     private void updateLabels() {
+        double totalIncome;
         try {
             totalIncome = IncomeDAO.getInstance().getAll().stream().mapToDouble(Income::getValue).sum();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             AlertManager.showErrorAlert("Erro na base de dados", "Ocorreu um erro na base de dados, tente novamente");
-
+            totalIncome = 0;
         }
+        double dizimo;
+        if (totalIncome < MINIMUM_INCOME_DIZIMO){
+            dizimoValue_label.setText("Valor insuficiente para o dizimo");
+            dizimo = 0;
+        } else {
+            dizimo = totalIncome * DIZIMO_FEE / 100;
+            dizimoValue_label.setText(dizimo + "kzs");
+        }
+        balance = totalIncome - dizimo - totalValuePredicted;
+        if (credit != null){
+            if (credit.getDeadline().isAfter(LocalDate.now())){
+                balance += credit.getGrantedValue();
+            } else {
+                balance -= credit.valueToPay();
+            }
+        }
+        availableValue_label.setText(balance + "kzs");
     }
 
     private void getMonthlyPrevision() {
@@ -313,6 +333,9 @@ public class PrevisionController implements Initializable {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             AlertManager.showErrorAlert("Erro na busca", "Ocorreu um erro na busca do credito, tente novamente");
+        }
+        for (MonthlyPrevision monthlyPrevision : monthlyPrevisions) {
+            totalValuePredicted += monthlyPrevision.getPredictedValue();
         }
     }
 }

@@ -106,7 +106,7 @@ public class MonthlyPrevisionDAO implements AccessObject<MonthlyPrevision> {
 
     public LinkedList<MonthlyPrevision> getAll() throws SQLException{
         connection = SQLiteConnection.connect();
-        sqlStatement = String.format("SELECT * FROM %s", TABLE_NAME);
+        sqlStatement = String.format("SELECT * FROM %s WHERE %s=%d", TABLE_NAME, FIELD_YEAR, LocalDate.now().getYear());
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sqlStatement);
         LinkedList<MonthlyPrevision> monthlyPrevisions = new LinkedList<>();

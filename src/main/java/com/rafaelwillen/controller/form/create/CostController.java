@@ -68,7 +68,16 @@ public class CostController extends CustomWindow implements Initializable {
         }
 
         try {
-            Double.parseDouble(value_textField.getText());
+            double value = Double.parseDouble(value_textField.getText());
+            if (value <= 0){
+                AlertManager.showWarningAlert("Valor Inválido", "O valor do custo não pode zero");
+                return false;
+            }
+            if (value > prevision.getPredictedValue()){
+                AlertManager.showWarningAlert("Valor Inválido", "O valor do custo não pode ser superior ao valor da previsão");
+                return false;
+            }
+
         } catch (NumberFormatException ignored) {
             AlertManager.showWarningAlert("Valor Inválido", "Preencha o campo do valor usando números");
             return false;

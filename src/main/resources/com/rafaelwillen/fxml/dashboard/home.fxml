@@ -31,7 +31,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px; -fx-fill: #FF0000;" text="Previsão Mensal" wrappingWidth="130.0" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px; -fx-fill: #FF0000;" text="Gasto Mensal" wrappingWidth="130.0" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Balanço Mensal" wrappingWidth="130.0" GridPane.rowIndex="2" />
                         <Text fx:id="monthlyGain_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #5ad73b; -fx-font-size: 16px;" textAlignment="RIGHT" GridPane.columnIndex="1" />
                         <Text fx:id="monthlyPrevision_label" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FF0000; -fx-font-size: 16px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -104,15 +104,14 @@
                 <Label alignment="CENTER" layoutX="296.0" layoutY="14.0" styleClass="sub-header" text="Transações dos Últimos 15 Dias" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="14.0" />
                 <TableView fx:id="transactions_table" layoutX="206.0" layoutY="59.0" prefHeight="379.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                     <columns>
-                        <TableColumn fx:id="transactionName_column" editable="false" maxWidth="190.0" minWidth="180.0" prefWidth="172.0" text="Nome da Transação" />
-                        <TableColumn fx:id="transactionType_column" editable="false" maxWidth="120.0" minWidth="80.0" prefWidth="50.0" text="Tipo" />
-                        <TableColumn fx:id="value_column" editable="false" maxWidth="160.0" minWidth="120.0" prefWidth="150.0" text="Valor" />
-                        <TableColumn fx:id="memberName_colum" editable="false" maxWidth="180.0" minWidth="140.0" prefWidth="150.0" text="Membro" />
-                        <TableColumn fx:id="date_column" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Data e Hora" />
+                        <TableColumn fx:id="transactionName_column" editable="false" maxWidth="-Infinity" minWidth="190.0" prefWidth="201.0" text="Nome" />
+                        <TableColumn fx:id="transactionType_column" editable="false" maxWidth="-Infinity" minWidth="190.0" prefWidth="283.0" text="Tipo" />
+                        <TableColumn fx:id="value_column" editable="false" maxWidth="-Infinity" minWidth="190.0" prefWidth="201.0" text="Valor" />
+                        <TableColumn fx:id="date_column" editable="false" maxWidth="-Infinity" minWidth="188.0" prefWidth="289.0" text="Data e Hora" />
                     </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
                 </TableView>
             </children>
         </AnchorPane>

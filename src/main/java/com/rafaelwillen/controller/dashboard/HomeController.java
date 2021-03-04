@@ -1,20 +1,31 @@
 package com.rafaelwillen.controller.dashboard;
 
+import com.rafaelwillen.database.dao.finance.CostDAO;
+import com.rafaelwillen.database.dao.finance.IncomeDAO;
 import com.rafaelwillen.model.family.Family;
 import com.rafaelwillen.model.family.Parent;
 import com.rafaelwillen.model.family.Person;
 import com.rafaelwillen.model.finance.Cost;
+import com.rafaelwillen.model.finance.GeneralCost;
 import com.rafaelwillen.model.finance.Income;
+import com.rafaelwillen.model.finance.IndividualCost;
+import com.rafaelwillen.util.tableViewModel.TransactionModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -50,22 +61,19 @@ public class HomeController implements Initializable {
     private Label sex_label;
 
     @FXML
-    private TableView<String> transactions_table;
+    private TableView<TransactionModel> transactions_table;
 
     @FXML
-    private TableColumn<String, String> transactionName_column;
+    private TableColumn<TransactionModel, String> transactionName_column;
 
     @FXML
-    private TableColumn<String, String> transactionType_column;
+    private TableColumn<TransactionModel, String> transactionType_column;
 
     @FXML
-    private TableColumn<String, String> value_column;
+    private TableColumn<TransactionModel, String> value_column;
 
     @FXML
-    private TableColumn<String, String> memberName_colum;
-
-    @FXML
-    private TableColumn<String, String> date_column;
+    private TableColumn<TransactionModel, LocalDate> date_column;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,7 +94,7 @@ public class HomeController implements Initializable {
         name_label.setText(userLoggedIn.getName());
         age_label.setText(String.valueOf(userLoggedIn.getAge()));
         sex_label.setText(String.valueOf(userLoggedIn.getSex().name().charAt(0)));
-
+        updateTransactionsTable();
         loadQuickFinanceCard();
     }
 
@@ -94,39 +102,48 @@ public class HomeController implements Initializable {
         double monthlyBalance;
         double monthlyIncome = 0;
         double monthlyCost = 0;
-
-        // Incomes
-        if (family.getFather() != null) {
-            monthlyIncome += family.getFather().getIncomes().stream().filter(income ->
-                    sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
-            monthlyCost += family.getFather().getCosts().stream().filter(cost ->
-                    sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
+        try{
+            for (Income income : IncomeDAO.getInstance().getAll()){
+                if (income.getAddedDate().getMonth().equals(LocalDate.now().getMonth())){
+                    monthlyIncome += income.getValue();
+                }
+            }
+            for (Cost cost : CostDAO.getInstance().getAll()){
+                if (cost.getAddedDate().getMonth().equals(LocalDate.now().getMonth())){
+                    monthlyCost += cost.getValue();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (family.getMother() != null) {
-            monthlyIncome += family.getMother().getIncomes().stream().filter(income ->
-                    sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
-            monthlyCost += family.getMother().getCosts().stream().filter(cost ->
-                    sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-        }
-        monthlyIncome += family.getSons().stream().flatMap(son -> son.getIncomes().stream()).filter(income ->
-                sameMonthAndYear(income.getAddedDate())).mapToDouble(Income::getValue).sum();
-
-        // Costs
-        monthlyCost = family.getCosts().stream().filter(cost ->
-                sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-        monthlyCost += family.getSons().stream().flatMap(son -> son.getCosts().stream()).filter(cost ->
-                sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-        monthlyCost += family.getPets().stream().flatMap(pet -> pet.getCosts().stream()).filter(cost ->
-                sameMonthAndYear(cost.getAddedDate())).mapToDouble(Cost::getValue).sum();
-
         monthlyBalance = monthlyIncome - monthlyCost;
-
         monthlyGain_label.setText(monthlyIncome + " kzs");
         monthlyPrevision_label.setText(monthlyCost + " kzs");
         monthlyBalance_label.setText(monthlyBalance + " kzs");
     }
 
-    private boolean sameMonthAndYear(LocalDate date) {
-        return date.getMonth().equals(LocalDate.now().getMonth()) && date.getYear() == LocalDate.now().getYear();
+    private void updateTransactionsTable(){
+        ObservableList<TransactionModel> transactionModels = FXCollections.observableArrayList();
+        try {
+            for (Cost cost : CostDAO.getInstance().getAll()) {
+                if (cost.getAddedDate().isAfter(LocalDate.now().minusDays(15))){
+                    transactionModels.add(new TransactionModel(cost));
+                }
+            }
+            for (Income income : IncomeDAO.getInstance().getAll()) {
+                if (income.getAddedDate().isAfter(LocalDate.now().minusDays(15))){
+                    transactionModels.add(new TransactionModel(income));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        transactionModels.sort(Comparator.comparing(TransactionModel::getDate));
+        transactionName_column.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        transactionType_column.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        value_column.setCellValueFactory(new PropertyValueFactory<>("Value"));
+        date_column.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        transactions_table.setItems(transactionModels);
     }
+
 }
